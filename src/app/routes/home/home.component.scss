@@ -1,3 +1,37 @@
 @import '~@swimlane/ngx-datatable/index.css';
 @import '~@swimlane/ngx-datatable/themes/material.scss';
 @import '~@swimlane/ngx-datatable/assets/icons.css';
+
+:host ::ng-deep .datatable-header-cell{
+  padding: 5px;
+  border: 1px black ridge;
+}
+
+:host ::ng-deep .datatable-row-wrapper{
+  text-align: center;
+  width: available;
+}
+
+:host ::ng-deep .datatable-body-cell{
+  padding: 5px;
+  border: 1px black ridge;
+}
+
+:host ::ng-deep .datatable-row-wrapper:nth-child(2n+1){
+  background-color: rgb(235, 209, 161);
+}
+
+:host ::ng-deep .datatable-row-wrapper:nth-child(2n){
+  background-color: rgb(161, 231, 161);
+}
+
+:host ::ng-deep .datatable-row-wrapper:hover{
+  background-color: cornflowerblue;
+  color: beige
+}
+
+:host ::ng-deep .datatable-header{
+  background-color: cornflowerblue;
+  color: beige;
+  text-align: center;
+}

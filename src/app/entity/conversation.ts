@@ -1,4 +1,7 @@
-class Conversation{
+import {User} from "./User";
+import {Message} from "./Message";
+
+export class Conversation{
  id: number;
  name: string;
  lMessages: Array<Message>;

@@ -1,1 +1,16 @@
-<p>home works!</p>
+<h2 class="text-center m-3 text-primary">Bonjour {{ user.pseudo }}</h2>
+
+<div class="m-5">
+  <h3>Liste des commandes</h3>
+  <ngx-datatable
+      [rows]="rows"
+      [columns]="columns"
+      [columnMode]="'force'"
+      [headerHeight]="40"
+      [footerHeight]="40"
+      [rowHeight]="'auto'"
+      [limit]="50"
+      class="ngx-datatable"
+    >
+    </ngx-datatable>
+</div>

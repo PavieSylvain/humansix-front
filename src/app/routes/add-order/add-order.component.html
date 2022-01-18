@@ -1,1 +1,55 @@
-<p>add-order works!</p>
+<h2>Nouvelle commande</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="m-5">
+  <div class="input-group mb-3">
+    <label for="customer" class="input-group-text">Client: </label>
+    <select id="customer" formControlName="customer" class="form-control">
+      <option *ngFor="let customer of customers; let index = index" value="{{ index }}">{{ customer.firstname }} {{ customer.lastname }}</option>
+    </select>
+  </div>
+
+  <div class="input-group mb-3">
+    <label for="status" class="input-group-text">Status: </label>
+    <input id="status" type="text" formControlName="status" class="form-control">
+  </div>
+
+  <div class="input-group mb-3">
+    <label for="product" class="input-group-text">Produit: </label>
+    <select id="product" type="text" class="form-control" [(ngModel)]="selectedProduct" [ngModelOptions]="{standalone: true}">
+      <option *ngFor="let product of products; let index = index" value="{{ index }}">{{ product.name }} ({{ product.price }} €)</option>
+    </select>
+  </div>
+
+  <div class="input-group mb-3">
+    <label for="quantity" class="input-group-text">Quantité: </label>
+    <input id="quantity" type="number" class="form-control" [(ngModel)]="productQuantity" [ngModelOptions]="{standalone: true}">
+  </div>
+  <button class="btn btn-primary" type="button" (click)="addProduct()">Ajouter</button>
+
+  <table class="my-5 table table-warning table-striped">
+    <tr class="table-primary text-center">
+      <th>Nom du produit</th>
+      <th>Prix unitaire</th>
+      <th>quantité</th>
+      <th>total</th>
+      <th></th>
+    </tr>
+    <tr class="table-warning text-center" *ngFor="let item of cart; let index = index">
+      <td>{{ item.product.name }}</td>
+      <td>{{ item.product.price }} €</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.total }} €</td>
+      <button type="button" (click)="removeProduct(index)"><td>X</td></button>
+    </tr>
+    <tr class="table-primary text-center">
+      <td></td>
+      <td></td>
+      <th>total</th>
+      <th>{{ total }} €</th>
+      <td></td>
+    </tr>
+  </table>
+
+
+  <button class="btn btn-success" type="submit">Valider la commande</button>
+</form>

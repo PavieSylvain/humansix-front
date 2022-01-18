@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, AfterViewInit, OnInit} from '@angular/core';
+import {AuthService} from "../../security/auth.service";
 
 @Component({
   selector: 'app-success-order',
   templateUrl: './success-order.component.html',
   styleUrls: ['./success-order.component.css']
 })
-export class SuccessOrderComponent implements OnInit {
+export class SuccessOrderComponent implements AfterViewInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    setTimeout(() =>
+      {
+        this.authService.redirectionHome();
+      },
+      5000);
   }
+
 
 }
