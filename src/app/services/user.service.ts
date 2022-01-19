@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import {SettingsService} from "../configuration/settings-service.service";
 import {Observable} from "rxjs";
 import {User} from "../entity/User";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private http: HttpClient, private settings: SettingsService) { }
+  constructor(private http: HttpClient, private settings: SettingsService, private router: Router) { }
 
   configUrl = this.settings.getConfigUrl();
 
@@ -22,7 +23,7 @@ export class UserService {
 
   register(user: User){
     return this.http.post(this.configUrl + '/register', user).subscribe(
-      data => console.log("success", data),
+      () => this.router.navigate(['/login']).then(r => {}),
       error => console.log("error", error)
     );
   }
